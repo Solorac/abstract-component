@@ -5,11 +5,16 @@ export abstract class BaseComponent implements OnInit {
   constructor() {}
   ngOnInit() {
     console.log('PARENT');
+    this.testFunction(this.parentFunction);
   }
 
   testFunction(funct: () => void) {
     console.log(this.name);
     funct();
+  }
+
+  parentFunction() {
+    console.log('PARENTFUNCTION');
   }
 }
 
@@ -46,3 +51,10 @@ export class ChildBComponent extends BaseComponent {
     console.log('ChildBBB');
   }
 }
+
+@Component({
+  selector: 'my-appCCC',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class ChildCComponent extends BaseComponent {}
